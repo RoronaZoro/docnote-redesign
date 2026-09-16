@@ -58,7 +58,7 @@ Lighthouse/Core Web Vitals: **N/A — browser/Lighthouse environment unavailable
 | Build | N/A — no build configuration or package manifest |
 | Lint | N/A — no lint configuration |
 | Typecheck | N/A — no typed source or typecheck configuration |
-| JavaScript syntax | PASS — `node --check app.js`; `node --check design-5/app.js` |
+| JavaScript syntax | PASS — `node --check app.js` |
 | Route smoke test | PASS — temporary Node server returned HTTP 200 for `/` and `/design-1/` through `/design-4/` |
 | JSON-LD validation | PASS — parsed with Node; unsupported `operatingSystem`, iOS, and Android claims absent |
 | SEO metadata inspection | PASS — static assertions covered canonical, CTA/demo/privacy destinations, one H1, noindex wrappers, and mockup semantics |
