@@ -2,7 +2,7 @@
 
 ## Project overview
 
-This static project recreates/redesigns the public DocNote landing page. The original DocNote source code was unavailable, so the main landing-page scope was recreated from publicly accessible content. It contains four visual concepts with shared content and interaction behavior. The separate `design-5/` motion experiment is outside those four concepts.
+This static project recreates/redesigns the public DocNote landing page. The original DocNote source code was unavailable, so the main landing-page scope was recreated from publicly accessible content. It contains four visual concepts with shared content and interaction behavior. 
 
 ## Design concepts
 
@@ -118,7 +118,6 @@ Nathan/
 ├── design-2/index.html Product preview wrapper
 ├── design-3/index.html Editorial preview wrapper
 ├── design-4/index.html Dark preview wrapper
-└── design-5/           Separate motion experiment bundle
 ```
 
 ## How to run
