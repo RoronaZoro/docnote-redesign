@@ -25,6 +25,12 @@ assert(styles.includes('body[data-design="dark"] .button{color:#0b1719}'), 'Dark
 for (const variant of [1, 2, 3, 4]) {
   const wrapper = fs.readFileSync(`design-${variant}/index.html`, 'utf8');
   assert(wrapper.includes('name="robots" content="noindex,follow"'), `missing noindex on design ${variant}`);
+  if (variant === 2) {
+    assert(wrapper.includes('href="styles.css"') && wrapper.includes('src="app.js"'), 'Design 2 local assets are missing');
+    const design2Script = fs.readFileSync('design-2/app.js', 'utf8');
+    assert(design2Script.includes("body.dataset.design = 'product'"), 'Design 2 Product initialization is missing');
+    continue;
+  }
   assert(wrapper.includes(`index.html?design=${variant}`), `missing design ${variant} route`);
 }
 
