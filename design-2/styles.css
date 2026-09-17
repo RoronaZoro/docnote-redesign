@@ -122,20 +122,29 @@ body[data-design="editorial"] .hero{grid-template-columns:1fr}
 }
 @media(max-width:520px) and (prefers-reduced-motion:reduce){body[data-design] .workflow-line.is-mobile-tracked:after{transform:scaleY(var(--workflow-progress,0));transition:none}}
 
-/* Design 2: allow the report mockup to shrink inside the padded mobile hero. */
-@media(max-width:520px){body[data-design="product"] .hero-visual,body[data-design="product"] .visual-window{width:100%;min-width:0;max-width:100%}body[data-design="product"] .security-note{width:calc(100% - .5rem);margin-left:.5rem}}
-
-/* Design 2 mobile mockup containment. */
-@media(max-width:520px){
-  body[data-design="product"] .hero-visual{display:block;inline-size:100%;min-inline-size:0;margin:0}
-  body[data-design="product"] .visual-window{inline-size:100%;min-inline-size:0;max-inline-size:100%;padding:1rem}
-  body[data-design="product"] .window-top{gap:.5rem;align-items:flex-start}
-  body[data-design="product"] .status{min-width:0;text-align:right}
-  body[data-design="product"] .report-head{gap:.75rem}
-  body[data-design="product"] .report-head>div{min-width:0}
-  body[data-design="product"] .report-head h2{font-size:1.65rem}
-  body[data-design="product"] .report-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
-  body[data-design="product"] .report-grid div{min-width:0;padding:.75rem}
-  body[data-design="product"] .report-grid p,body[data-design="product"] .security-note span:last-child{overflow-wrap:anywhere}
-  body[data-design="product"] .security-note{display:grid;grid-template-columns:auto minmax(0,1fr);width:calc(100% - .5rem);max-width:calc(100% - .5rem);margin:-1rem 0 0 .5rem}
-}
+/* Design 2 session card: one bounded Product surface at every viewport width. */
+body[data-design="product"] .product-session-card{width:100%;min-width:0;margin:0}
+body[data-design="product"] .product-session-card__surface{width:100%;min-width:0;background:#fff;border:1px solid #dce9e4;box-shadow:0 22px 50px #001d2340;color:#092f35;overflow:hidden}
+body[data-design="product"] .product-session-card__top{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #e4eeea;font-size:.78rem;font-weight:750}
+body[data-design="product"] .product-session-card__top small{margin-left:.4rem;color:#5f7570;font-weight:500}
+body[data-design="product"] .product-session-card__status{display:inline-flex;align-items:center;gap:.35rem;color:#396b63;font-size:.68rem;white-space:nowrap}
+body[data-design="product"] .product-session-card__status i{width:6px;height:6px;border-radius:50%;background:#65a47d;flex:0 0 auto}
+body[data-design="product"] .product-session-card__summary{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.5rem 1.25rem 1.1rem}
+body[data-design="product"] .product-session-card__label{color:#4f6d68;font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+body[data-design="product"] .product-session-card__summary h2{margin:.3rem 0;font:400 1.8rem/1.1 var(--serif)}
+body[data-design="product"] .product-session-card__summary p{margin:0;color:#5f7570;font-size:.75rem}
+body[data-design="product"] .product-session-card__avatar{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#c9e6dc;color:#216358;font-size:.7rem;font-weight:800;flex:0 0 auto}
+body[data-design="product"] .product-session-card__lines{display:grid;gap:.55rem;margin:0 1.25rem;padding-top:1rem;border-top:1px solid #e4eeea}
+body[data-design="product"] .product-session-card__lines span{height:7px;border-radius:2px;background:#d8eee7}
+body[data-design="product"] .product-session-card__details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;padding:1.25rem}
+body[data-design="product"] .product-session-card__details section{min-width:0;background:#eef6f2;padding:.85rem}
+body[data-design="product"] .product-session-card__details b{font-size:.7rem}
+body[data-design="product"] .product-session-card__details p{margin:.45rem 0 0;color:#4c6b66;font-size:.7rem;line-height:1.5}
+body[data-design="product"] .product-session-card__footer{display:flex;justify-content:space-between;gap:.75rem;padding:0 1.25rem 1rem;color:#426b63;font-size:.68rem}
+body[data-design="product"] .product-session-card__footer b{display:inline-block;border-radius:50%;background:#d7eee3;padding:.1rem .27rem}
+body[data-design="product"] .product-session-card__security{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.75rem;align-items:start;background:#d4eee5;border-top:1px solid #c1dfd4;padding:1rem 1.25rem;color:#092f35}
+body[data-design="product"] .product-session-card__security>span{font-size:1.35rem;line-height:1;color:#216358}
+body[data-design="product"] .product-session-card__security p{min-width:0;margin:0;font-size:.7rem;line-height:1.5}
+body[data-design="product"] .product-session-card__security b{font-size:.75rem}
+body[data-design="product"] .product-session-card figcaption{display:block;margin-top:.7rem;color:#5f7570;font-size:.68rem;line-height:1.4}
+@media(max-width:520px){body[data-design="product"] .product-session-card,body[data-design="product"] .product-session-card__surface{inline-size:100%;min-inline-size:0;max-inline-size:100%}body[data-design="product"] .product-session-card__top{align-items:flex-start;gap:.6rem;padding:.9rem 1rem}body[data-design="product"] .product-session-card__top small{display:none}body[data-design="product"] .product-session-card__status{min-width:0;white-space:normal;text-align:right}body[data-design="product"] .product-session-card__summary{gap:.75rem;padding:1.2rem 1rem .9rem}body[data-design="product"] .product-session-card__summary>div{min-width:0}body[data-design="product"] .product-session-card__summary h2{font-size:1.55rem}body[data-design="product"] .product-session-card__lines{margin-inline:1rem;padding-top:.85rem}body[data-design="product"] .product-session-card__details{gap:.5rem;padding:1rem}body[data-design="product"] .product-session-card__details section{padding:.7rem}body[data-design="product"] .product-session-card__footer{display:grid;gap:.45rem;padding:0 1rem 1rem}body[data-design="product"] .product-session-card__security{gap:.6rem;padding:1rem}body[data-design="product"] .product-session-card__details p,body[data-design="product"] .product-session-card__footer,body[data-design="product"] .product-session-card__security p{overflow-wrap:anywhere}}
