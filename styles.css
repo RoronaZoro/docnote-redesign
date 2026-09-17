@@ -121,3 +121,6 @@ body[data-design="editorial"] .hero{grid-template-columns:1fr}
   .footer-bottom{padding-top:1rem}
 }
 @media(max-width:520px) and (prefers-reduced-motion:reduce){body[data-design] .workflow-line.is-mobile-tracked:after{transform:scaleY(var(--workflow-progress,0));transition:none}}
+
+/* Design 2: allow the report mockup to shrink inside the padded mobile hero. */
+@media(max-width:520px){body[data-design="product"] .hero-visual,body[data-design="product"] .visual-window{width:100%;min-width:0;max-width:100%}body[data-design="product"] .security-note{width:calc(100% - .5rem);margin-left:.5rem}}
