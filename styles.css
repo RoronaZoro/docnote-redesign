@@ -80,3 +80,44 @@ body[data-design="clinical"] .cta-section:before,body[data-design="product"] .ct
 .desktop-nav{color:#55716c}.eyebrow{color:#55716c}.microcopy{color:#5f7570}.window-top small,.report-head p{color:#5f7570}.label,.card-kicker{color:#617670}.report-grid p{color:#58716b}.report-footer{color:#4e6a62}.trust-strip{color:#5f7570}.security-list span{color:#3e655b}.security-list p{color:#426c61}.footer-top p,.footer-bottom,.variant-switch span{color:#5f7570}.button:hover{background:#9f4536}
 body[data-design="dark"] .button{color:#0b1719}
 body[data-design="editorial"] .hero{grid-template-columns:1fr}
+
+/* Mobile-only layout protection: desktop geometry and motion remain untouched. */
+@media(max-width:520px){
+  :root{--mobile-gutter:20px}
+  .section-wrap,.site-header{width:calc(100% - (var(--mobile-gutter) * 2))}
+  body[data-design="product"] .hero{width:calc(100% - (var(--mobile-gutter) * 2));padding:2rem 1.5rem}
+  body[data-design="editorial"] .site-header{padding-inline:var(--mobile-gutter)}
+  .hero{gap:2.75rem;padding-block:3rem}
+  .hero h1{font-size:clamp(2.5rem,11vw,3.35rem);letter-spacing:-.06em}
+  body[data-design="editorial"] .hero h1{font-size:clamp(2.65rem,12vw,3.4rem)}
+  .hero-actions{gap:.7rem;margin-top:1.6rem}
+  .hero-actions .button{min-height:44px}
+  .workflow-section{padding-block:4.5rem}
+  .workflow-line{grid-template-columns:1fr;gap:0;border-top:0}
+  .workflow-line:before{display:none}
+  .workflow-line article{padding:1.4rem 0 2rem 2rem}
+  .workflow-line article:last-child{padding-bottom:0}
+  .workflow-line:after{left:0;right:auto;top:var(--workflow-line-start,28px);width:2px;height:var(--workflow-line-length,0px);background:var(--coral);transform:scaleY(0);transform-origin:top;transition:transform 280ms var(--ease-premium);z-index:1}
+  .workflow-line.is-mobile-tracked:after{transform:scaleY(var(--workflow-progress,0))}
+  .workflow-line article:after{top:1.34rem;left:-5px}
+  body[data-design="product"] .workflow-line{padding:0}
+  body[data-design="product"] .workflow-line article{border-right:0;border-bottom:1px solid var(--line)}
+  body[data-design="product"] .workflow-line article:last-child{border-bottom:0}
+  body[data-design="editorial"] .workflow-line article{margin-right:0;padding:1.4rem 0 2rem 2rem}
+  body[data-design="editorial"] .workflow-line article:last-child{padding-bottom:0}
+  .capability-section,.security-section,.specialties{padding-block:4.5rem}
+  .capability-card{padding:1.5rem;min-height:0}
+  .capability-card.large{min-height:0}
+  .people-row{margin-top:3rem}
+  .security-panel,.cta-section{padding:1.5rem}
+  .security-panel{gap:1.75rem}
+  .security-list div{padding-block:1.2rem}
+  .quote-grid blockquote{padding:1.5rem}
+  .faq-section{padding-block:4.5rem}
+  details{padding-block:1.15rem}
+  summary{font-size:.95rem}
+  .cta-section{gap:1.75rem;margin-bottom:2.5rem}
+  .footer-top{gap:1.25rem;padding-bottom:2rem}
+  .footer-bottom{padding-top:1rem}
+}
+@media(max-width:520px) and (prefers-reduced-motion:reduce){body[data-design] .workflow-line.is-mobile-tracked:after{transform:scaleY(var(--workflow-progress,0));transition:none}}

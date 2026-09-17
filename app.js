@@ -120,9 +120,50 @@ function setupWorkflow() {
   const workflow = document.querySelector('.workflow-line');
   if (!workflow) return;
   const steps = [...workflow.querySelectorAll('article')];
+  const mobileWorkflow = window.matchMedia('(max-width: 520px)');
+  let mobileTrackingActive = false;
+
+  const updateMobileProgress = () => {
+    if (!mobileWorkflow.matches || !steps.length) return;
+
+    // The mobile line is sized from the actual first and last step markers so
+    // variable copy length and viewport height cannot leave it stuck at step 1.
+    const markerOffset = 28;
+    const start = steps[0].offsetTop + markerOffset;
+    const end = steps[steps.length - 1].offsetTop + markerOffset;
+    const trackingPoint = window.innerHeight * 0.54;
+    const positions = steps.map(step => step.getBoundingClientRect().top + markerOffset);
+    const progress = Math.min(1, Math.max(0, (trackingPoint - positions[0]) / (positions[positions.length - 1] - positions[0] || 1)));
+    const activeIndex = Math.max(0, positions.reduce((current, position, index) => (
+      position <= trackingPoint ? index : current
+    ), -1));
+
+    workflow.style.setProperty('--workflow-line-start', `${start}px`);
+    workflow.style.setProperty('--workflow-line-length', `${Math.max(end - start, 0)}px`);
+    workflow.style.setProperty('--workflow-progress', progress.toFixed(3));
+    workflow.classList.add('is-mobile-tracked');
+    steps.forEach((step, index) => step.classList.toggle('is-current', index <= activeIndex));
+  };
+
+  const setupMobileTracking = () => {
+    if (mobileTrackingActive) return;
+    mobileTrackingActive = true;
+    window.addEventListener('scroll', updateMobileProgress, { passive: true });
+    window.addEventListener('resize', updateMobileProgress);
+    updateMobileProgress();
+  };
+
+  mobileWorkflow.addEventListener('change', () => {
+    if (mobileWorkflow.matches) setupMobileTracking();
+    else workflow.classList.remove('is-mobile-tracked');
+  });
 
   const activate = () => {
     workflow.classList.add('flow-live');
+    if (mobileWorkflow.matches) {
+      setupMobileTracking();
+      return;
+    }
     steps.forEach((step, index) => {
       if (motionOK) window.setTimeout(() => step.classList.add('is-current'), index * 160 + 260);
       else step.classList.add('is-current');
